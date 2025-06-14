@@ -64,7 +64,7 @@ function renderTeam() {
       name: "최정빈",
       img: "https://avatars.githubusercontent.com/u/202569352?v=4",
       github: "https://github.com/Choejungbeen",
-      portfolio: "https://hyk-portfolio.vercel.app/",
+      portfolio: "https://midtest-lime.vercel.app/",
     },
     {
       name: "신준혁",
@@ -74,15 +74,15 @@ function renderTeam() {
     },
     {
       name: "송명석",
-      img: "",
+      img: "https://avatars.githubusercontent.com/u/144006149?v=4",
       github: "https://github.com/JoongBuGit",
       portfolio: "http://52.231.101.23:3000/projects_test",
     },
     {
       name: "김용섭",
-      img: "",
+      img: "https://avatars.githubusercontent.com/u/181037662?v=4",
       github: "https://github.com/yongseop712",
-      portfolio: "https://hyk-portfolio.vercel.app/",
+      portfolio: "https://yongseop123.vercel.app/",
     },
   ];
 
