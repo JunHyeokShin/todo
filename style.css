@@ -409,6 +409,6 @@ hr {
 @media (max-width: 35rem) {
   .team-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 }
