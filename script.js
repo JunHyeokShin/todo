@@ -57,6 +57,58 @@ function renderCategoryList() {
   });
 }
 
+// 팀 출력
+function renderTeam() {
+  const teamMembers = [
+    {
+      name: "최정빈",
+      img: "https://avatars.githubusercontent.com/u/202569352?v=4",
+      github: "https://github.com/Choejungbeen",
+      portfolio: "https://hyk-portfolio.vercel.app/",
+    },
+    {
+      name: "신준혁",
+      img: "https://avatars.githubusercontent.com/u/68908725?v=4",
+      github: "https://github.com/JunHyeokShin",
+      portfolio: "https://hyk-portfolio.vercel.app/",
+    },
+    {
+      name: "송명석",
+      img: "",
+      github: "https://github.com/JoongBuGit",
+      portfolio: "http://52.231.101.23:3000/projects_test",
+    },
+    {
+      name: "김용섭",
+      img: "",
+      github: "https://github.com/yongseop712",
+      portfolio: "https://hyk-portfolio.vercel.app/",
+    },
+  ];
+
+  taskContainer.innerHTML = `
+    <section>
+      
+      <div class="team-grid">
+        ${teamMembers
+          .map(
+            (member) => `
+          <div class="team-member">
+            <div class="member-img">
+              ${member.img ? `<img src="${member.img}" alt="${member.name} 프로필 사진">` : ""}
+            </div>
+            <h3>${member.name}</h3>
+            <p><a href="${member.github}" target="_blank">GitHub</a></p>
+            <p><a href="${member.portfolio}" target="_blank">Portfolio</a></p>
+          </div>
+        `
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
 // 할 일 목록 출력
 function renderTaskList() {
   let ongoingTaskList = [];
@@ -121,9 +173,6 @@ function renderTaskList() {
   }
 
   taskContainer.innerHTML = "";
-  if (ongoingTaskList.length === 0 && completedTaskList.length === 0) {
-    return;
-  }
 
   ongoingTaskList.forEach((task) => {
     const taskElement = document.createElement("div");
@@ -205,13 +254,22 @@ function setActiveView(view, categoryId = null, title = "") {
 
   currentView = view;
   currentCategory = categoryId;
-  if (currentView === "all") {
+  if (currentView === "team") {
+    mainHeader.innerHTML = `
+        <div class="main-header-left">
+          <span>👥</span>
+          <h2>팀</h2>
+        </div>`;
+    document.querySelector(`[data-view="team"]`).classList.add("active");
+    renderTeam();
+  } else if (currentView === "all") {
     mainHeader.innerHTML = `
         <div class="main-header-left">
           <span>♾️</span>
           <h2>모두</h2>
         </div>`;
     document.querySelector(`[data-view="all"]`).classList.add("active");
+    renderTaskList();
   } else if (currentView === "common") {
     mainHeader.innerHTML = `
         <div class="main-header-left">
@@ -219,6 +277,7 @@ function setActiveView(view, categoryId = null, title = "") {
           <h2>작업</h2>
         </div>`;
     document.querySelector(`[data-view="common"]`).classList.add("active");
+    renderTaskList();
   } else if (currentView === "completed") {
     mainHeader.innerHTML = `
         <div class="main-header-left">
@@ -226,6 +285,7 @@ function setActiveView(view, categoryId = null, title = "") {
           <h2>완료됨</h2>
         </div>`;
     document.querySelector(`[data-view="completed"]`).classList.add("active");
+    renderTaskList();
   } else if (currentView === "category") {
     mainHeader.innerHTML = `
         <div class="main-header-left">
@@ -234,9 +294,8 @@ function setActiveView(view, categoryId = null, title = "") {
         </div>
         <button class="delete-button" onclick="deleteCategory('${categoryId}')">×</button>`;
     document.querySelector(`[data-category="${categoryId}"]`).classList.add("active");
+    renderTaskList();
   }
-
-  renderTaskList();
 
   // 모바일 화면 사이드바 닫기
   if (window.innerWidth <= 800) {
@@ -288,6 +347,11 @@ function deleteCategory(categoryId) {
     updateTaskCategorySelectOption();
   }
 }
+
+// '팀' 카테고리 클릭 이벤트 처리
+document.querySelector('[data-view="team"]').addEventListener("click", () => {
+  setActiveView("team", null);
+});
 
 // '모두' 카테고리 클릭 이벤트 처리
 document.querySelector('[data-view="all"]').addEventListener("click", () => {

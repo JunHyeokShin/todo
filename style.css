@@ -16,7 +16,6 @@ body {
   background: #1c1c1c;
   display: flex;
   color: #ffffff;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .overlay {
@@ -166,7 +165,6 @@ hr {
   padding: 1rem 1rem 0.5rem;
   display: flex;
   justify-content: space-between;
-  /* gap: 0.75rem; */
   align-items: center;
   cursor: default;
 }
@@ -331,6 +329,63 @@ hr {
   }
 }
 
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 0 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.team-member {
+  text-align: center;
+  background-color: #2a2a2a;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.team-member:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.member-img {
+  width: 150px;
+  height: 150px;
+  background-color: #444;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+}
+
+.member-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-member h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.team-member p {
+  margin-bottom: 0.5rem;
+}
+
+.team-member a {
+  color: #7289da;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.team-member a:hover {
+  color: #5865f2;
+}
+
 @media (max-width: 50rem) {
   .hamburger {
     display: block;
@@ -348,5 +403,12 @@ hr {
 
   .sidebar.open {
     transform: translateX(0);
+  }
+}
+
+@media (max-width: 35rem) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
