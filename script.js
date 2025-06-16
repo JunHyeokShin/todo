@@ -76,7 +76,7 @@ function renderTeam() {
       name: "송명석",
       img: "https://avatars.githubusercontent.com/u/144006149?v=4",
       github: "https://github.com/JoongBuGit",
-      portfolio: "http://52.231.101.23:3000/projects_test",
+      portfolio: "http://52.231.101.23:3001/projects_test",
     },
     {
       name: "김용섭",
@@ -210,7 +210,7 @@ function renderTaskList() {
         <div class="task-content">
           <p class="completed">${task.title}</p>
           <div class="task-info">
-            ${task.category ? `<p>${categoryName}</p>` : `<p>작업</>`}
+            ${task.category ? `<p>${categoryName}</p>` : `<p>작업</p>`}
             ${task.date ? `<span>•</span><p>${task.date}</p>` : ""}
           </div>
         </div>
